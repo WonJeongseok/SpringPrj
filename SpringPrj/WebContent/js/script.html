@@ -5,170 +5,132 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 
-	/* function printAdd() {
-		var x,y;
-		x = prompt("x값을 입력하세요",0);
-		y = prompt("y값을 입력하세요",0);
-		x= parseInt(x);
-		y=parseInt(y);
-		btnPrint.value=x+y;
-		/* alert(x+y); */ 
-	} */
-	
-	/*document.write("hello");
-	 function f1() {
-		var a = 1;
-	
-		function f2() {
-			return a;
-		}
-	}
-	
-	var f = f1();
-	var a = f();
-	alert(a); */
-	/* function f1() {
-		a=1;
-	}
-	function f2() {
-	
-		alert(a);
-	}
-	
-	
-	f1();
-	f2(); */
-	
-	/* function f1() {
-		a=1;
-	}
-	
-	
-	f1();
-	alert(a); */
-	/* var add = new Function("x,y", "return x+y;"); */
-	/* var add = function(x, y){
-		return x+y;
-	}
-	 */
-	 
-	/*  var add = function(){
-		 x = arguments[0];
-		 y = argumetns[1];
-	 } */
-	 /* 
-	 var add = function(){
-		 var sum = 0;
-		 for(var i = 0; i<arguments.length; i++)
-			 sum += arguments[i]; 
-		 
-		 return sum;
-	 };
-	
-	console.log(add(3,8,10));
-	*/
-	
-	/* var data = [2,4,5,7,8];
-	var entity = {id:1, title:"Hello", writerId:"newlec"}; */
-	
-	/* for(var i = 0; i<data.length; i++)
-		console.log(data[i]); */
-	
-	/* for(var i in data) //인덱스를 반환.
-		console.log(data[i]);
-	 */
-	/*  for(var k in entity) //인덱스를 반환.
-			console.log(entity[k]); */
-		
-		
-	/* var ob = {};
-	ob.name = "test";
-	ob.test = "2020494"
-	
-	alert(ob.test);
-	 */
-	/* var json = [
-		{id: "1", title:"tetet", "writer id": "newlec"},
-		{id: "2", title:"good", "writer-id": "2222"}
-	];
-	
-	alert(json[1].title);
-	alert(json[1]["writer-id"]);
-	alert(json[0]["writer id"]);
-	 */
-	 
-	/*  var x = 3;
-	 undefined
-	 var y = new Number(3);
-	 undefined
-	 alert(x===y);
-	 undefined
-	 alert(x==y);
-	 undefined
-	 alert(3+4.5); //7.5
-	 undefined
-	 alert(3+"4"); //34
-	 undefined
-	 alert(3.5-"2"); //1.5 빼기는 숫자로 바꿔줌
-	 undefined
-	  */
-	 
-	/*  var data = eval("var x=3; x++;");
-	 alert(x);
-	 
-	 var data = eval("[2,4,6]");
-	 alert(data[2]);
-	  */
-	/*  var data = JSON.parse("[2,4,6]");
-	 alert(data[1]);
-	 
-	 var data = eval('({id: "1", title:"tetet", "writer id": "newlec"})');
-	alert(data.title); */
-	/* var data =  JSON.parse('{"id": 1, "title":"tetet", "writer id": "newlec"}');
-	alert(typeof data.title);
-	alert(typeof data.id); */
-	 /* json 객체 파싱할 때는 소괄호로 한 번 더 감싸주어야 함 */
-	 
- 	function btnAddt(){
-		
-		var x,y;
-		
-		x = prompt(parseInt("x값 입력",0));
-		y = prompt(parseInt("y값 입력",0));
-		
-		btnAdd.value = x+y;
-		alert(x+y);
-	}
- 
-	
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
+function calcApp(){
+   
+   var xText = document.getElementById("x");
+   var yText = document.getElementById("y");
+   var addButton = document.getElementById("add-button");
+   var resultText = document.getElementById("result");
+   
+   addButton.onclick = addButtonClick;
+   
+   function addButtonClick(){
+      
+   var x,y;
+   x = parseInt(xText.value);
+   y = parseInt(yText.value);
+   /* alert(parseInt(x)+parseInt(y)); */
+
+   resultText.value=x+y;
+   }   
+}
+   
+/*    function init(){
+      var btnPrint = document.getElementById("btn-print");
+      
+      btnPrint.onclick = printResult;
+   } */
+   
+   window.onload = calcApp;
+   /* btnPrint.onclick= printResult; */
+   //-------------------------------------------------------------------------------
+   
+   window.onload = function(){
+      var countLabel = document.getElementById("count-label");
+      var countButton = document.getElementById("count-button");
+      var timerId = null;
+      
+      var ex1 = document.getElementById("ex1");
+      ex1.style.marginTop = "0px";
+      
+      countButton.onclick = function(){
+         
+         if(timerId == null)
+            timerId = setInterval(function(){
+               var count = parseInt(countLabel.textContent);
+               var marginTop = parseInt(ex1.styel.marginTop);
+               
+               // 목표치에 도달했을 경우
+               if(count <= 0) {
+               clearInterval(timerId);
+               timerId = null;
+               }
+               
+               if(marginTop >= 100) {
+                  clearInterval(timerId);
+                  timerId = null;}
+               }
+      
+         //countLabel.textContent = count -1;
+         ex1.style.marginTop = (marginTop + 1) + "px";   
+      }, 30);
+   };
+   
+   //--------------------------------------------------------------------------- open a window 예제
+   
+   window.onload = function(){
+      var openButton = document.getElementById("open-button");
+      var movButton = document.getElementById("mov-button");
+      var win = null;
+   
+      openButton.onclick = function(){
+         if(win == null)
+            win=open("notice.html", "_blank", "width=500px height=300px");
+      };   
+   
+      movButton.onclick = function(){
+         if(win != null)
+            win.moveBy(-10, 0);
+      };
+   };
+   
+   //--------------------------------------------------------------------------- iframe 예제
+   
+   window.onload = function(){
+      var navButton = document.getElementById("nav-button");
+      var win = window.frames[0];
+      
+      navButton.onclick = function(){
+         win.location.href="http://www.newlecture.com";
+      };
+   };
+      
 </script>
 </head>
 <body>
-<!-- <input type="button" value="출력" onclick="printAdd();" id="btnPrint"/> -->
-<input type="button" value="출력"onclick="btnAdd()" id="btnAdd"/>
+   <hr />
+   <!-- iframe 예제 -->
+   <div>
+      <input id="nav-button" type="button" value="페이지 전환" />
+      <iframe src="notice.html" style="width:500px; height:300px;"></iframe>
+   </div>
+
+   <hr />
+   <!-- open a window 예제 -->
+   <div>
+      <input id="open-button" type="button" value="새창띄우기" />
+      <input id="mov-button" type="button" value="왼쪽으로 이동" />
+   </div>
+
+   <hr />
+   <!-- Timer 예제 -->
+   <p>
+       남은시간 <span id="count-label">60</span>초
+       <input id="count-button" type="button" value="카운트 시작"  />
+   </p>
+   <hr />
+
+<!--  onclick="alert('안내메세지');"
+<input type="button" value="출력"   
+onclick="   var x, y; x=prompt("x값입력"); y=prompt("y값입력");alert(x+y);"/>  -->
+
+   <!-- Calculator 예제 -->
+<input type="text" id="x" placeholder="x값을 입력하세요" />
+   <input type="text" id="y" placeholder="y값을 입력하세요" />
+   =
+   <input type="button" value="더하기" id="add-button"/>
+   <input type="text" value="" id="result" />
 
 </body>
 </html>
